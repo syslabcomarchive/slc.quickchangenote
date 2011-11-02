@@ -4,7 +4,7 @@
     i18n_domain="slc.quickchangenote">
    
     <browser:resource
-        file="resources/jquery.flexbox.js"
+        file="resources/quickchangenote.js"
         name="quickchangenote.js"
         />
 
