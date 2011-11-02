@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<layers>
+    <layer
+        name="slc.quickchangenote"
+        interface="slc.quickchangenote.interfaces.IQuickChangenoteLayer" />
+</layers>
+

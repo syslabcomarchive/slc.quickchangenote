@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<object
+    name="portal_controlpanel"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="slc.quickchangenote"
+    purge="False">
+    
+    <configlet
+        title="Quick Changenotes"
+        action_id="quickchangenote"
+        appId="slc.quickchangenote" 
+        category="Products"
+        condition_expr=""
+        url_expr="string:${portal_url}/@@quickchangenote-settings"
+        icon_expr="string:${portal_url}/maintenance_icon.png"
+        visible="True"    
+        i18n:attributes="title">
+            <permission>Manage portal</permission>
+    </configlet>
+
+</object>
