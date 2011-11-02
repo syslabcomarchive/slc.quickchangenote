@@ -3,16 +3,9 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="slc.quickchangenote">
    
-    <!-- Register both versions, then debugging is as simple as changing an
-         entry in portal_javascript -->
     <browser:resource
         file="resources/jquery.flexbox.js"
-        name="jquery.flexbox.js"
-        />
-
-    <browser:resource
-        file="resources/jquery.flexbox.min.js"
-        name="jquery.flexbox.min.js"
+        name="quickchangenote.js"
         />
 
     <browser:page
