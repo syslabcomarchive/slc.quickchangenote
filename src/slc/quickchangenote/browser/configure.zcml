@@ -1,7 +1,7 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser"
-    i18n_domain="slc.stickystatusmessages">
+    i18n_domain="slc.quickchangenote">
    
     <!-- Register both versions, then debugging is as simple as changing an
          entry in portal_javascript -->
