@@ -16,4 +16,10 @@
         provides="Products.GenericSetup.interfaces.EXTENSION"
         />
 
+    <subscriber
+        provides="Products.Archetypes.interfaces.IObjectPostValidation"
+        factory=".eventhandlers.ValidateChangenote"
+        />
+
+
 </configure>

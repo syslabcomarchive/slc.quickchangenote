@@ -1,33 +1,6 @@
 <tal:script replace="structure string:<script" /> type="text/javascript"<tal:script replace="structure string:>" />
     jQuery(function($){
         var notes = <tal:notes replace="view/json_notes" />;
-        var commentfield = $("#cmfeditions_version_comment");
-
-        /* Mark as required */
-        var span = document.createElement("span");
-        $(span).css("color", "red").attr("title", "Required").addClass(
-            "required").append(document.createTextNode(" " + "\u25a0"));
-        commentfield.parent().find("label").append(span);
-
-        /* Set up autocomplete */
-        commentfield.autocomplete(notes);
-
-        /* Clear any error formatting on change note once it is filled in */
-        commentfield.change(function(){
-            commentfield.parent().toggleClass('error', false);
-        });
-
-        /* Check that the change note field has been entered */
-        var form = commentfield.closest("form");
-        form.submit(function(){
-            if(commentfield.val().length == 0){
-                commentfield.parent().toggleClass("error", true);
-                /* Remove this class from the submit button, otherwise we
-                 * might be prompted to confirm a resubmit */
-                $(":submit", form).toggleClass("submitting", false);
-                return false;
-            }
-            return true;
-        });
+        $("#cmfeditions_version_comment").autocomplete(notes);
     });
 <tal:script replace="structure string:</script>" />
