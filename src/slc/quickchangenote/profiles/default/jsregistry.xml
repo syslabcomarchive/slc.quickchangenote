@@ -5,7 +5,7 @@
                 compression="safe"
                 cookable="True"
                 enabled="True"
-                id="++resource++quickchangenote.js"
+                id="++resource++jquery.autocomplete.pack.js"
                 insert-after="jquery.js"
                 inline="False"/>
 

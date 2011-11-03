@@ -1,0 +1,6 @@
+<tal:script replace="structure string:<script" /> type="text/javascript"<tal:script replace="structure string:>" />
+    var notes = <tal:notes replace="view/json_notes" />;
+    jQuery(function($){
+        $("#cmfeditions_version_comment").autocomplete(notes);
+    });
+<tal:script replace="structure string:</script>" />

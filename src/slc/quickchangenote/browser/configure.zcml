@@ -4,15 +4,33 @@
     i18n_domain="slc.quickchangenote">
    
     <browser:resource
-        file="resources/quickchangenote.js"
-        name="quickchangenote.js"
+        file="resources/jquery.autocomplete.js"
+        name="jquery.autocomplete.js"
         />
 
+    <browser:resource
+        file="resources/jquery.autocomplete.pack.js"
+        name="jquery.autocomplete.pack.js"
+        />
+
+    <browser:resource
+        file="resources/jquery.autocomplete.css"
+        name="jquery.autocomplete.css"
+        />
+    
     <browser:page
         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
         name="quickchangenote-settings"
         class=".views.QuickChangenoteControlPanel"
         permission="cmf.ManagePortal"
+        />
+
+    <browser:viewlet  
+        name="slc.quickchangenote"
+        manager="Products.Archetypes.interfaces.IEditAfterFieldsets"
+        class=".viewlets.QuickChangenoteViewlet"
+        permission="zope2.View" 
+        layer="slc.quickchangenote.interfaces.IQuickChangenoteLayer"
         />
 
 </configure>
