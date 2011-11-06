@@ -4,20 +4,14 @@ from plone.registry.interfaces import IRegistry
 from plone.app.layout.viewlets.common import ViewletBase
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from slc.quickchangenote.interfaces import IQuickChangenoteSettings
+from slc.quickchangenote.utils import changenoteRequired, getSettings
 
 class QuickChangenoteViewlet(ViewletBase):
     index = ViewPageTemplateFile('javascript.pt')
 
-    def settings(self):
-        registry = queryUtility(IRegistry)
-        if registry is None:
-            return None
-        return registry.forInterface(IQuickChangenoteSettings)
-        
-
     def notes(self):
         """ Returns the possible changenotes as a tuple. """
-        settings = self.settings()
+        settings = getSettings()
         if settings is None:
             return ()
         return tuple(settings.notes)
@@ -28,8 +22,4 @@ class QuickChangenoteViewlet(ViewletBase):
 
     def required(self):
         """ returns whether a change note is required on each save. """
-        settings = self.settings()
-        if settings is None:
-            # Default behaviour is also plone default, it is not required
-            return False
-        return settings.required
+        return changenoteRequired(self.context)

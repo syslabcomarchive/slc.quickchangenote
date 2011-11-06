@@ -19,3 +19,9 @@ class IQuickChangenoteSettings(Interface):
             description=_(u"Select this if you want to make change notes "
                 u"required."),
             required=True, default=False)
+    required_on_new = Bool(
+            title=_(u"Change note is required for new content"),
+            description=_(u"Select this if change notes are required "
+            "when creating new content. This has no effect if the above "
+            "setting is disabled."),
+            required=True, default=False)

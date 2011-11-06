@@ -6,7 +6,7 @@ from plone.registry.interfaces import IRegistry
 from Products.Archetypes.interfaces import IObjectPostValidation
 from Products.Archetypes.interfaces import IBaseContent
 from Products.CMFCore.utils import getToolByName
-from slc.quickchangenote.interfaces import IQuickChangenoteSettings
+from slc.quickchangenote.utils import changenoteRequired
 from slc.quickchangenote import MessageFactory as _
 
 def isVersionable(ob):
@@ -37,11 +37,8 @@ class ValidateChangenote(object):
         if data is not _marker:
             return data
 
-        registry = queryUtility(IRegistry)
-        if registry is None:
-            return None
-        if registry.forInterface(IQuickChangenoteSettings).required:
-            context = aq_inner(self.context)
+        context = aq_inner(self.context)
+        if changenoteRequired(context):
             if isVersionable(context):
                 value = request.form.get(self.field_name,
                     request.get(self.field_name, ''))
