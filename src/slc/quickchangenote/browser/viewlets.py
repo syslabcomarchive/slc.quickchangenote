@@ -12,7 +12,7 @@ class QuickChangenoteViewlet(ViewletBase):
     def notes(self):
         """ Returns the possible changenotes as a tuple. """
         settings = getSettings()
-        if settings is None:
+        if settings is None or settings.notes is None:
             return ()
         return tuple(settings.notes)
 
