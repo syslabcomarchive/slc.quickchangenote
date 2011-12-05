@@ -15,7 +15,11 @@ def isVersionable(ob):
         pr = getToolByName(ob, 'portal_repository')
     except AttributeError:
         return None
-    return pr.isVersionable(ob);
+    return pr.isVersionable(ob)
+
+def supportsAutoVersion(ob):
+    pr = getToolByName(ob, 'portal_repository')
+    return pr.supportsPolicy(ob, 'at_edit_autoversion')
 
 class ValidateChangenote(object):
     """ Validate that the user has provided a change note. """
@@ -39,8 +43,10 @@ class ValidateChangenote(object):
             return data
 
         context = aq_inner(self.context)
-        if IQuickChangenoteLayer.providedBy(request) and changenoteRequired(
-            context) and isVersionable(context):
+        if IQuickChangenoteLayer.providedBy(request) and \
+            changenoteRequired(context) and isVersionable(context) and \
+            supportsAutoVersion(context):
+                
             value = request.form.get(self.field_name,
                 request.get(self.field_name, ''))
             if len(value) == 0:
