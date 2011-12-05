@@ -7,6 +7,7 @@ from Products.Archetypes.interfaces import IObjectPostValidation
 from Products.Archetypes.interfaces import IBaseContent
 from Products.CMFCore.utils import getToolByName
 from slc.quickchangenote.utils import changenoteRequired
+from slc.quickchangenote.interfaces import IQuickChangenoteLayer
 from slc.quickchangenote import MessageFactory as _
 
 def isVersionable(ob):
@@ -38,14 +39,14 @@ class ValidateChangenote(object):
             return data
 
         context = aq_inner(self.context)
-        if changenoteRequired(context):
-            if isVersionable(context):
-                value = request.form.get(self.field_name,
-                    request.get(self.field_name, ''))
-                if len(value) == 0:
-                    errors = {self.field_name: _(
-                        u'A change note must be provided')}
-                    cache[cache_key] = errors
-                    return errors
+        if IQuickChangenoteLayer.providedBy(request) and changenoteRequired(
+            context) and isVersionable(context):
+            value = request.form.get(self.field_name,
+                request.get(self.field_name, ''))
+            if len(value) == 0:
+                errors = {self.field_name: _(
+                    u'A change note must be provided')}
+                cache[cache_key] = errors
+                return errors
         cache[cache_key] = None
         return None
