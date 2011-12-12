@@ -7,7 +7,7 @@ class IQuickChangenoteLayer(Interface):
     """Marker Interface used by as BrowserLayer
     """
 
-class IQuickChangenoteSettings(Interface):
+class IQuickChangenoteSettingsDefault(Interface):
     """ Interface class that describes settings for plone.app.registry. """
     notes = List(
             title=_(u"Change notes"),
@@ -27,3 +27,7 @@ class IQuickChangenoteSettings(Interface):
             "when creating new content. This has no effect if the above "
             "setting is disabled."),
             required=True, default=False)
+
+class IQuickChangenoteSettings(IQuickChangenoteSettingsDefault):
+    """ hooking all pages together """
+  

@@ -2,7 +2,7 @@
  <utilities> 
   <utility 
      interface="slc.quickchangenote.interfaces.IQuickChangenoteSettings" 
-     factory="osha.searchurls.browser.views.QuickChangenoteSettings"
+     factory="slc.quickchangenote.browser.views.QuickChangenoteSettings"
      /> 
  </utilities> 
 </componentregistry>

@@ -2,9 +2,10 @@
 from persistent import Persistent
 from plone.app.controlpanel.form import ControlPanelForm
 from plone.fieldsets.fieldsets import FormFieldsets
-from slc.quickchangenote.interfaces import IQuickChangenoteSettings
+from slc.quickchangenote.interfaces import IQuickChangenoteSettings, IQuickChangenoteSettingsDefault
 from slc.quickchangenote import MessageFactory as _
 from zope.annotation.interfaces import IAnnotations
+from zope.app.component.hooks import getSite
 from zope.component import getUtility
 from zope.interface import implements
 
@@ -45,7 +46,7 @@ class QuickChangenoteSettings(Persistent):
         return self.settings.required_on_new
     def set_required_on_new(self, value):
         self.settings.required_on_new = value
-    required = property(get_required_on_new, set_required_on_new)
+    required_on_new = property(get_required_on_new, set_required_on_new)
 
     @property
     def settings(self):
@@ -53,7 +54,7 @@ class QuickChangenoteSettings(Persistent):
         ann = IAnnotations(site)
         return ann.setdefault(SETTING_KEY, Settings())
 
-default_set = FormFieldsets(IQuickChangenoteSettings)
+default_set = FormFieldsets(IQuickChangenoteSettingsDefault)
 default_set.id ='default'
 default_set.label = _(u"Default")
 
