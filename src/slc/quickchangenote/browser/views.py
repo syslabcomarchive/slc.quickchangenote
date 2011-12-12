@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 from persistent import Persistent
 from plone.app.controlpanel.form import ControlPanelForm
+from zope.formlib import form
 from plone.fieldsets.fieldsets import FormFieldsets
-from slc.quickchangenote.interfaces import IQuickChangenoteSettings, IQuickChangenoteSettingsDefault
+from slc.quickchangenote.interfaces import IQuickChangenoteSettings
 from slc.quickchangenote import MessageFactory as _
 from zope.annotation.interfaces import IAnnotations
 from zope.app.component.hooks import getSite
@@ -54,13 +55,13 @@ class QuickChangenoteSettings(Persistent):
         ann = IAnnotations(site)
         return ann.setdefault(SETTING_KEY, Settings())
 
-default_set = FormFieldsets(IQuickChangenoteSettingsDefault)
+default_set = FormFieldsets(IQuickChangenoteSettings)
 default_set.id ='default'
 default_set.label = _(u"Default")
 
 class QuickChangenoteControlPanel(ControlPanelForm):
-    form_fields = FormFieldsets(default_set)
-    form_name = _(u"do I need a form name?")
+    form_fields = form.FormFields(default_set)
+    form_name = _(u"Settings")
     label = _(u"Quick Changenote Settings")
     description = _(u"Use the settings below to configure "
                     u"slc.quickchangenote for this site")
