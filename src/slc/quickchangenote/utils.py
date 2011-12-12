@@ -1,12 +1,12 @@
-from zope.component import queryUtility
-from plone.registry.interfaces import IRegistry
+# -*- coding: utf-8 -*-
+from zope.component import getUtility
 from slc.quickchangenote.interfaces import IQuickChangenoteSettings
 
 def getSettings():
-    registry = queryUtility(IRegistry)
+    registry = getUtility(IQuickChangenoteSettings)
     if registry is None:
         return None
-    return registry.forInterface(IQuickChangenoteSettings)
+    return registry
 
 def changenoteRequired(context):
     """ returns whether a change note is required on each save. """

@@ -1,0 +1,8 @@
+<componentregistry> 
+ <utilities> 
+  <utility 
+     interface="slc.quickchangenote.interfaces.IQuickChangenoteSettings" 
+     factory="osha.searchurls.browser.views.QuickChangenoteSettings"
+     /> 
+ </utilities> 
+</componentregistry>

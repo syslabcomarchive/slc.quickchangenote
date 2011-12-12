@@ -1,8 +1,8 @@
+# -*- coding: utf-8 -*-
 from Acquisition import aq_inner
 from zope.interface import implements 
 from zope.component import adapts, queryUtility
 from zope.annotation.interfaces import IAnnotations
-from plone.registry.interfaces import IRegistry
 from Products.Archetypes.interfaces import IObjectPostValidation
 from Products.Archetypes.interfaces import IBaseContent
 from Products.CMFCore.utils import getToolByName

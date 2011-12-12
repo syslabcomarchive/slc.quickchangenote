@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from setuptools import setup, find_packages
 
 version = '0.1'
@@ -24,7 +25,7 @@ setup(
     zip_safe=False,
     install_requires=[
         'setuptools',
-        'Products.CMFPlone',
+        'simplejson',
     ],
     entry_points="""
         [z3c.autoinclude.plugin]

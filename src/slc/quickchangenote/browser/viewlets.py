@@ -1,6 +1,6 @@
-from json import dumps
+# -*- coding: utf-8 -*-
+from simplejson import dumps
 from zope.component import queryUtility
-from plone.registry.interfaces import IRegistry
 from plone.app.layout.viewlets.common import ViewletBase
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from slc.quickchangenote.interfaces import IQuickChangenoteSettings

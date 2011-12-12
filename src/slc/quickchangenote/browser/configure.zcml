@@ -18,6 +18,12 @@
         file="resources/jquery.autocomplete.css"
         name="jquery.autocomplete.css"
         />
+
+  <adapter
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      provides="slc.quickchangenote.interfaces.IQuickChangenoteSettings"
+      factory=".views.quick_changenote_settings" 
+      />
     
     <browser:page
         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
