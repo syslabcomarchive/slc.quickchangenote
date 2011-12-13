@@ -4,8 +4,7 @@ Changelog
 0.2 (unreleased)
 ----------------
 
-- Nothing changed yet.
-
+- Back-ported to Plone 3 [pysailor]
 
 0.1 (2011-12-13)
 ----------------
