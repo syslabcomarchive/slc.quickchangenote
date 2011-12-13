@@ -1,0 +1,17 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    i18n_domain="slc.quickchangenote">
+
+    <configure zcml:condition="installed Products.Archetypes">
+       <browser:viewlet
+          name="cmfeditions.versioningfields"
+          manager="Products.Archetypes.interfaces.IEditAfterFieldsets"
+          class=".browser.viewlets.QuickChangenoteViewlet"
+          template="browser/edit.pt"
+          permission="cmf.ModifyPortalContent"
+          />
+    </configure>
+
+</configure>

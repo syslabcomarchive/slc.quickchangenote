@@ -40,8 +40,7 @@
         layer="slc.quickchangenote.interfaces.IQuickChangenoteLayer"
         />
 
-    <configure zcml:condition="installed Products.Archetypes">
-      <browser:viewlet
+       <browser:viewlet
           name="cmfeditions.versioningfields"
           manager="Products.Archetypes.interfaces.IEditAfterFieldsets"
           class=".viewlets.QuickChangenoteViewlet"
@@ -49,7 +48,6 @@
           permission="cmf.ModifyPortalContent"
           layer="slc.quickchangenote.interfaces.IQuickChangenoteLayer"
           />
-    </configure>
 
 
 </configure>
