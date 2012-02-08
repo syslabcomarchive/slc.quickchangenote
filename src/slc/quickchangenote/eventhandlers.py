@@ -1,14 +1,17 @@
 from Acquisition import aq_inner
+
 from zope.interface import implements 
-from zope.component import adapts, queryUtility
+from zope.component import adapts
 from zope.annotation.interfaces import IAnnotations
-from plone.registry.interfaces import IRegistry
+
 from Products.Archetypes.interfaces import IObjectPostValidation
 from Products.Archetypes.interfaces import IBaseContent
 from Products.CMFCore.utils import getToolByName
+
 from slc.quickchangenote.utils import changenoteRequired
 from slc.quickchangenote.interfaces import IQuickChangenoteLayer
 from slc.quickchangenote import MessageFactory as _
+from slc.quickchangenote.interfaces import IQuickChangenoteLayer
 
 def isVersionable(ob):
     try:
@@ -31,6 +34,9 @@ class ValidateChangenote(object):
         self.context = context
 
     def __call__(self, request):
+        if not IQuickChangenoteLayer.providedBy(request):
+            return
+
         # Archetypes will call us three times, and that complicates things.
         # Either the change note is there or it isn't. If its there the first
         # time, its not about to disappear during the processing of the
