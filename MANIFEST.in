@@ -1,0 +1,5 @@
+include *.txt
+graft src/slc/quickchangenote/profiles
+graft src/slc/quickchangenote/browser
+recursive-include src/slc/quickchangenote *.zcml
+recursive-include src/slc/quickchangenote *.dtml
